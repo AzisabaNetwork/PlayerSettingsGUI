@@ -1,6 +1,7 @@
 package net.azisaba.psgui.inventory;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -114,7 +115,7 @@ public class CratesInventory extends ClickableGUI {
         }
 
         // 小数点第2位で四捨五入
-        value = new BigDecimal(value).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
+        value = new BigDecimal(value).setScale(1, RoundingMode.HALF_UP).doubleValue();
 
         data.set(key, value);
         p.playSound(p.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
@@ -158,7 +159,7 @@ public class CratesInventory extends ClickableGUI {
         }
 
         // 小数点第2位で四捨五入
-        percentage = new BigDecimal(percentage).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
+        percentage = new BigDecimal(percentage).setScale(1, RoundingMode.HALF_UP).doubleValue();
 
         List<String> lore = new ArrayList<>(Arrays.asList(Chat.f("&7これより大きい確率に設定されている当たりは聞こえなくなります。"),
                 "", Chat.f("&a現在の設定: &e{0}%", percentage), ""));

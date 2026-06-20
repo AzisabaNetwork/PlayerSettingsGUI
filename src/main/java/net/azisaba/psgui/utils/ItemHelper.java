@@ -51,7 +51,7 @@ public class ItemHelper {
 
     public static void addHideEnchant(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
-        meta.addEnchant(Enchantment.DURABILITY, 1, true);
+        meta.addEnchant(Enchantment.UNBREAKING, 1, true);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         item.setItemMeta(meta);
     }
@@ -65,12 +65,6 @@ public class ItemHelper {
     }
 
     private static ItemStack getItemStackWithoutWarning(Material material, int data) {
-        try {
-            return ItemStack.class.getConstructor(Material.class, int.class, short.class).newInstance(material, 1,
-                    (short) data);
-        } catch ( Exception e ) {
-            e.printStackTrace();
-            return null;
-        }
+        return new ItemStack(material, 1);
     }
 }
